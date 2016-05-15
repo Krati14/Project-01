@@ -1,0 +1,19 @@
+'use strict';
+
+var express = require('express');
+var controller = require('./comment.controller');
+var auth = require('../../auth/auth.service');	//new added
+
+var router = express.Router();
+
+router.get('/', controller.index);
+router.get('/:id', controller.show);
+//router.post('/', controller.create);
+router.post('/', auth.isAuthenticated(), controller.create);	//new added
+
+router.put('/:id', controller.update);
+router.patch('/:id', controller.update);
+//router.delete('/:id', controller.destroy);
+router.delete('/:id', auth.isAuthenticated(), controller.destroy); //new added
+
+module.exports = router;
