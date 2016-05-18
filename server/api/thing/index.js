@@ -2,8 +2,10 @@
 
 var express = require('express');
 var controller = require('./thing.controller');
-
-var router = express.Router();
+//var songs_controller = require ('./songs.controller');
+//var band_controller = require('./band.controller');
+//var singer_controller = require('./singer.controller');
+//var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
